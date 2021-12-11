@@ -1,4 +1,4 @@
 encrypt = false
-bucket  = "yyyyyyyyy-tfstate"
+bucket  = "gggggggg-tfstate"
 region  = "us-east-1"
 key     = "template-terraform/dev/template.tfstate"
