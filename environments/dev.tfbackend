@@ -1,4 +1,4 @@
 encrypt = false
-bucket  = "tafuncionando-tfstate"
+bucket  = "tafuncionando-gabi"
 region  = "us-east-1"
 key     = "template-terraform/dev/template.tfstate"
