@@ -17,6 +17,17 @@ resource "aws_s3_bucket" "bucket_1" {
   }
 }
 
+#Analytics
+resource "aws_s3_bucket" "bucket_2" {
+  bucket = "corp-analytics-684264620210"
+  acl    = "private"
+
+  tags = {
+    Name        = "bucket-analytics"
+    Environment = "Dev"
+  }
+}
+
 #Artifacts
 resource "aws_s3_bucket" "bucket_3" {
   bucket = "artifacts-684264620210"
