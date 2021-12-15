@@ -47,6 +47,6 @@ resource "aws_glue_job" "job_ingestion" {
   role_arn = "arn:aws:iam::684264620210:role/datalake_devopsrole"
 
   command {
-    script_location = "s3://artifacts/example.py"
+    script_location = "s3://artifacts-684264620210/data_ingestion.py"
   }
 }
