@@ -10,7 +10,7 @@ variable "job_name" {
 
 variable "job_role" {
   description = "role do job que contem as permissoes de ingerir"
-  default = "arn:aws:iam::684264620210:role/datalake_devopsrole"
+  default = "arn:aws:iam::684264620210:role/datalake_ingestion"
 
 }
 

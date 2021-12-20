@@ -45,13 +45,13 @@ module "bucket_4" {
 
 # ----- layer for processing -----#
 
-module "glue-job-2" {
-  source               = "./modules/glue-job-module/"
-  job_name             = "data_aggregator"
-  job_version          = "2.0"
-  job_script_location  = "s3://artifacts-684264620210/data_agreggator.py"
-  job_language         = "python"
-}
+# module "glue-job-2" {
+#   source               = "./modules/glue-job-module/"
+#   job_name             = "data_aggregator"
+#   job_version          = "2.0"
+#   job_script_location  = "s3://artifacts-684264620210/data_agreggator.py"
+#   job_language         = "python"
+# }
 
 # ----- layer for visualization -----#
 
