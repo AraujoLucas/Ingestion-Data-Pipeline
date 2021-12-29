@@ -1,8 +1,3 @@
-variable "aws_region" {
-  description = "Aws Region to work on"
-  default = "us-east-1"
-}
-
 variable "job_name" {
   type = string
   description = "Job Name"
@@ -25,5 +20,20 @@ variable "job_script_location" {
 }
 variable "job_version" {
   description = "Job version"
+
+}
+
+variable "connections" {
+  default = []
+
+}
+
+variable "work_type" {
+  default = "G.1X"
+
+}
+
+variable "number_of_workers" {
+  default = 5
 
 }

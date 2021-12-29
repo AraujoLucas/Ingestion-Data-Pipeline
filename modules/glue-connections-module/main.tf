@@ -1,5 +1,6 @@
 resource "aws_glue_connection" "connection" {
-  name = var.conn_name
+
+  name                  = var.conn_name
   
   connection_properties = {
     JDBC_CONNECTION_URL = var.conn_url 
