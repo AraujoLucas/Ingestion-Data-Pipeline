@@ -34,6 +34,6 @@ variable "work_type" {
 }
 
 variable "number_of_workers" {
-  default = 5
+  default = 10
 
 }

@@ -9,23 +9,32 @@ variable "conn_name" {
 variable "conn_url" {
   description = "url the connection db"
 
+
 }
 variable "conn_user" {
   description = "user for connection in db"
+  default     = "olidbuser"
 
 }
+
+variable "conn_vpc_ids" {
+  description = "user for connection in db"
+  default = "vpc-00bfcdbe5e827f2a6"
+
+}
+
 variable "conn_pwd" {
   description = "pwd for connection in db"
 
 }
 
 variable "conn_sg_ids" {
-  default = "sg-021152b8d2bdce48a"
+  default = "sg-0928b2c479d4dfc3f"
 }
 
 variable "conn_subnet" {
   type = string
-  default = "subnet-00f15e6d880f43512"
+  default = "subnet-0b0e20016e09b5f99"
 }
 
 variable "conn_azs" {
