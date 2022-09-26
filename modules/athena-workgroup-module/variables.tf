@@ -1,6 +1,6 @@
 variable "query_output_locations" {
   type        = string
-  default     = "wkg-results-684264620210"
+  default     = "wkg-results-account-id"
   description = "A map of output locations (S3 URLs) for Athena queries. Keys are query names identical to the map above"
 }
 
