@@ -16,10 +16,10 @@ variable "glue_crawler_database_name" {
 
 variable "glue_crawler_role" {
   description = "(Required) The IAM role friendly name (including path without leading slash), or ARN of an IAM role, used by the crawler to access other resources."
-  #default = "arn:aws:iam::684264620210:role/service-role/AWSGlueServiceRole-data_polling"
+  #default = "arn:aws:iam::account-id:role/service-role/AWSGlueServiceRole-data_polling"
 }
 
 variable "glue_crawler_s3_path" {
   description = "s3 for crawler polling"
-  #default = "s3://corp-raw-684264620210/company/data-analysis/"
+  #default = "s3://corp-raw-account-id/company/data-analysis/"
 }
