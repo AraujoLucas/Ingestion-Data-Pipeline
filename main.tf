@@ -9,14 +9,14 @@ module "glue-job-1" {
   source               = "./modules/glue-job-module/"
   job_name             = "data_generate"
   job_version          = "2.0"
-  job_script_location  = "s3://artifacts-684264620210/data_ingestion.py"
+  job_script_location  = "s3://bkt/data_ingestion.py"
   job_language         = "python"
 }
 
 # module "glue_connection" {
 #   source       = "./modules/glue-connections-module"
 #   conn_name    = "pg_connection"
-#   conn_url     = "jdbc:postgresql://192.168.69.84:5432/olisaude"
+#   conn_url     = ""
 #   conn_pwd     = ""
 # }
 
@@ -26,7 +26,7 @@ module "glue_connection_1" {
   name        = "connection_pg"
  
   description = "Security Group"
-  vpc_id      =  "vpc-00bfcdbe5e827f2a6"
+  vpc_id      =  "vpc-id"
   ingress_with_self = [
     {
       description = "Security Group for connection}"
@@ -51,7 +51,7 @@ resource "aws_glue_connection" "glue_connection" {
   description     = "Conexão com banco de dados pg do ambiente } "
   connection_type = "JDBC"
   connection_properties = {
-    JDBC_CONNECTION_URL = "jdbc:postgresql://192.168.69.84:5432/olisaude"
+    JDBC_CONNECTION_URL = "url"
     USERNAME            = "olidbuser"
     PASSWORD            = ""
   }
@@ -59,7 +59,7 @@ resource "aws_glue_connection" "glue_connection" {
   physical_connection_requirements {
     availability_zone      = "us-east-1a"
     security_group_id_list = [module.glue_connection_1.security_group_id]
-    subnet_id              = "subnet-0b0e20016e09b5f99"
+    subnet_id              = "subnet-id"
   }
 }
 
@@ -68,102 +68,29 @@ module "crawler-1" {
   source                        = "./modules/glue-crawler-module"
   glue_crawler_name             = "data-polling-cnu-beneficiary"
   glue_crawler_database_name    = "db_cnu"
-  glue_crawler_role             = "arn:aws:iam::684264620210:role/service-role/AWSGlueServiceRole-data_polling"
-  glue_crawler_s3_path          = "s3://corp-raw-684264620210/cnu/beneficiary/"
+  glue_crawler_role             = "arn:aws:iam:::role/service-role/AWSGlueServiceRole-data_polling"
+  glue_crawler_s3_path          = "s3://bkt"
 
-}
-
-module "crawler-2" {
-  source                        = "./modules/glue-crawler-module"
-  glue_crawler_name             = "data-polling-cnu-sinister"
-  glue_crawler_database_name    = "db_cnu"
-  glue_crawler_role             = "arn:aws:iam::684264620210:role/service-role/AWSGlueServiceRole-data_polling"
-  glue_crawler_s3_path          = "s3://corp-raw-684264620210/cnu/sinister/"
-}
-
-module "crawler-3" {
-  source                        = "./modules/glue-crawler-module"
-  glue_crawler_name             = "data-polling-bradesco-beneficiary"
-  glue_crawler_database_name    = "db_bradesco"
-  glue_crawler_role             = "arn:aws:iam::684264620210:role/service-role/AWSGlueServiceRole-data_polling"
-  glue_crawler_s3_path          = "s3://corp-raw-684264620210/bradesco/beneficiary/"
-}
-
-module "crawler-4" {
-  source                        = "./modules/glue-crawler-module"
-  glue_crawler_name             = "data-polling-bradesco-sinister"
-  glue_crawler_database_name    = "db_bradesco"
-  glue_crawler_role             = "arn:aws:iam::684264620210:role/service-role/AWSGlueServiceRole-data_polling"
-  glue_crawler_s3_path          = "s3://corp-raw-684264620210/bradesco/sinister/"
-}
-
-module "crawler-5" {
-  source                        = "./modules/glue-crawler-module"
-  glue_crawler_name             = "data-polling-gndi-beneficiary"
-  glue_crawler_database_name    = "db_gndi"
-  glue_crawler_role             = "arn:aws:iam::684264620210:role/service-role/AWSGlueServiceRole-data_polling"
-  glue_crawler_s3_path          = "s3://corp-raw-684264620210/gndi/beneficiary/"
-}
-
-module "crawler-6" {
-  source                        = "./modules/glue-crawler-module"
-  glue_crawler_name             = "data-polling-gndi-sinister"
-  glue_crawler_database_name    = "db_gndi"
-  glue_crawler_role             = "arn:aws:iam::684264620210:role/service-role/AWSGlueServiceRole-data_polling"
-  glue_crawler_s3_path          = "s3://corp-raw-684264620210/gndi/sinister/"
-}
-
-module "crawler-7" {
-  source                        = "./modules/glue-crawler-module"
-  glue_crawler_name             = "data-polling-sulamerica-benefiaciary"
-  glue_crawler_database_name    = "db_sulamerica"
-  glue_crawler_role             = "arn:aws:iam::684264620210:role/service-role/AWSGlueServiceRole-data_polling"
-  glue_crawler_s3_path          = "s3://corp-raw-684264620210/sulamerica/benefiaciary/"
-}
-
-module "crawler-8" {
-  source                        = "./modules/glue-crawler-module"
-  glue_crawler_name             = "data-polling-sulamerica-sinister"
-  glue_crawler_database_name    = "db_sulamerica"
-  glue_crawler_role             = "arn:aws:iam::684264620210:role/service-role/AWSGlueServiceRole-data_polling"
-  glue_crawler_s3_path          = "s3://corp-raw-684264620210/sulamerica/sinister/"
-}
-
-module "crawler-9" {
-  source                        = "./modules/glue-crawler-module"
-  glue_crawler_name             = "data-polling-amil-benefiaciary"
-  glue_crawler_database_name    = "db_amil"
-  glue_crawler_role             = "arn:aws:iam::684264620210:role/service-role/AWSGlueServiceRole-data_polling"
-  glue_crawler_s3_path          = "s3://corp-raw-684264620210/amil/beneficiary/"
-}
-
-module "crawler-10" {
-  source                        = "./modules/glue-crawler-module"
-  glue_crawler_name             = "data-polling-amil-sinister"
-  glue_crawler_database_name    = "db_amil"
-  glue_crawler_role             = "arn:aws:iam::684264620210:role/service-role/AWSGlueServiceRole-data_polling"
-  glue_crawler_s3_path          = "s3://corp-raw-684264620210/amil/sinister/"
-}
 
 # ----- layer for storage -----#
 module "bucket_1" {
   source  = "./modules/s3-module/"
-  name    = "corp-raw-684264620210"
+  name    = "corp-raw-"
 }
 
 module "bucket_2" {
   source  = "./modules/s3-module/"
-  name    = "corp-analytics-684264620210"
+  name    = "corp-analytics-"
 }
 
 module "bucket_3" {
   source  = "./modules/s3-module/"
-  name    = "artifacts-684264620210"
+  name    = "artifacts-"
 }
 
 module "bucket_4" {
   source  = "./modules/s3-module/"
-  name    = "wkg-results-684264620210"
+  name    = "wkg-results-"
 }
 
 # ----- layer for processing -----#
@@ -172,7 +99,7 @@ module "bucket_4" {
 #   source               = "./modules/glue-job-module/"
 #   job_name             = "data_aggregator"
 #   job_version          = "2.0"
-#   job_script_location  = "s3://artifacts-684264620210/data_agreggator.py"
+#   job_script_location  = "s3://artifacts/data_agreggator.py"
 #   job_language         = "python"
 # }
 
